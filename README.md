@@ -1,2 +1,3 @@
 # DevOps_Repo
 # and this is how it all started...
+# i need to figure out how to create dockerfile, dockercompose, and add environment variable into existing container.
