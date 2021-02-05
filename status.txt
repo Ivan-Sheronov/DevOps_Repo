@@ -1,0 +1,8 @@
+PS F:\GitRepo\DevOps_Repo> git status
+On branch Sheronov
+Your branch is up to date with 'origin/Sheronov'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   log.txt
+        new file:   status.txt
