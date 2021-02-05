@@ -1,0 +1,15 @@
+PS F:\GitRepo\DevOps_Repo> git log  
+commit b067e3b16172802f2460d662c6e6baff532bf539 (HEAD -> Sheronov)
+Author: Ivan <evansgreap@gmail.com>
+Date:   Fri Feb 5 14:32:22 2021 +0300
+
+    two new files, log and status
+
+commit 2a1fe0e1a12b37265a45660dbe1a8a1ea3533acb (origin/Sheronov)
+Author: Ivan <evansgreap@gmail.com>
+Date:   Tue Feb 2 11:08:25 2021 +0300
+
+    .gitignore content
+
+commit 5da012b3ae6ab04db1cfaba1b11a323c40f5c94b (origin/Branch1, Branch1)
+
