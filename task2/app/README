@@ -1,0 +1,3 @@
+this is simple to-do app written in java.
+in this folder lies all the source code, and dockerfile for building a image from it.
+this folder is a source for dockerhub, witch made autobuild for each push to it.
