@@ -1,0 +1,209 @@
+greaper@Greaper-PC:~$ sudo docker run -d -u root -p 8080:8080 -v jenkins-data:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock -v "$HOME":/home jenkinsci/blueocean
+Unable to find image 'jenkinsci/blueocean:latest' locally
+latest: Pulling from jenkinsci/blueocean
+801bfaa63ef2: Pull complete                                                                                             755713f1a3c1: Pull complete                                                                                             eb3cc996a4d2: Pull complete                                                                                             53fff950d571: Pull complete                                                                                             f6936a1aec5a: Pull complete                                                                                             257a3874e67f: Pull complete                                                                                             a1322c53804d: Pull complete                                                                                             6f3525ef00e6: Pull complete                                                                                             d105e9324027: Pull complete                                                                                             3bd288623327: Pull complete                                                                                             0c464039fb0b: Pull complete                                                                                             25248a2f7ff6: Pull complete                                                                                             80aea1f6597d: Pull complete                                                                                             9507a0ecbe89: Pull complete                                                                                             9fb180a719ee: Pull complete                                                                                             04022983b5f3: Pull complete                                                                                             Digest: sha256:afa4c1c62f955d85040d258613da9eaa4aff7a03a455dc7bcbd6f79e76a72ea9
+Status: Downloaded newer image for jenkinsci/blueocean:latest
+ff828eed5c39fbc49e96c0d486a874dc99dac9fdbc1273699b1a73e0efaff069
+greaper@Greaper-PC:~$
+greaper@Greaper-PC:~$
+greaper@Greaper-PC:~$ docker ps -a
+Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.24/containers/json?all=1: dial unix /var/run/docker.sock: connect: permission denied
+greaper@Greaper-PC:~$ sudo docker ps -a
+CONTAINER ID   IMAGE                 COMMAND                  CREATED         STATUS         PORTS                               NAMES
+ff828eed5c39   jenkinsci/blueocean   "/sbin/tini -- /usr/…"   4 minutes ago   Up 4 minutes   0.0.0.0:8080->8080/tcp, 50000/tcp   nostalgic_chebyshev
+greaper@Greaper-PC:~$ ifconfig
+docker0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 172.18.0.1  netmask 255.255.0.0  broadcast 172.18.255.255
+        inet6 fe80::42:66ff:fe03:ac17  prefixlen 64  scopeid 0x20<link>
+        ether 02:42:66:03:ac:17  txqueuelen 0  (Ethernet)
+        RX packets 1391  bytes 469582 (469.5 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 1589  bytes 4702331 (4.7 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.148.19  netmask 255.255.255.240  broadcast 192.168.148.31
+        inet6 fe80::215:5dff:fe96:46d8  prefixlen 64  scopeid 0x20<link>
+        ether 00:15:5d:96:46:d8  txqueuelen 1000  (Ethernet)
+        RX packets 268371  bytes 403995054 (403.9 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 82196  bytes 5918562 (5.9 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 186  bytes 415188 (415.1 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 186  bytes 415188 (415.1 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+veth06ffe60: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet6 fe80::9453:23ff:fe5b:bd94  prefixlen 64  scopeid 0x20<link>
+        ether 96:53:23:5b:bd:94  txqueuelen 0  (Ethernet)
+        RX packets 1391  bytes 489056 (489.0 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 1602  bytes 4703337 (4.7 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+greaper@Greaper-PC:~$
+greaper@Greaper-PC:~$
+greaper@Greaper-PC:~$ docker log
+docker: 'log' is not a docker command.
+See 'docker --help'
+greaper@Greaper-PC:~$ docker --help
+
+Usage:  docker [OPTIONS] COMMAND
+
+A self-sufficient runtime for containers
+
+Options:
+      --config string      Location of client config files (default "/home/greaper/.docker")
+  -c, --context string     Name of the context to use to connect to the daemon (overrides DOCKER_HOST env var and
+                           default context set with "docker context use")
+  -D, --debug              Enable debug mode
+  -H, --host list          Daemon socket(s) to connect to
+  -l, --log-level string   Set the logging level ("debug"|"info"|"warn"|"error"|"fatal") (default "info")
+      --tls                Use TLS; implied by --tlsverify
+      --tlscacert string   Trust certs signed only by this CA (default "/home/greaper/.docker/ca.pem")
+      --tlscert string     Path to TLS certificate file (default "/home/greaper/.docker/cert.pem")
+      --tlskey string      Path to TLS key file (default "/home/greaper/.docker/key.pem")
+      --tlsverify          Use TLS and verify the remote
+  -v, --version            Print version information and quit
+
+Management Commands:
+  app*        Docker App (Docker Inc., v0.9.1-beta3)
+  builder     Manage builds
+  buildx*     Build with BuildKit (Docker Inc., v0.5.1-docker)
+  config      Manage Docker configs
+  container   Manage containers
+  context     Manage contexts
+  image       Manage images
+  manifest    Manage Docker image manifests and manifest lists
+  network     Manage networks
+  node        Manage Swarm nodes
+  plugin      Manage plugins
+  secret      Manage Docker secrets
+  service     Manage services
+  stack       Manage Docker stacks
+  swarm       Manage Swarm
+  system      Manage Docker
+  trust       Manage trust on Docker images
+  volume      Manage volumes
+
+Commands:
+  attach      Attach local standard input, output, and error streams to a running container
+  build       Build an image from a Dockerfile
+  commit      Create a new image from a container's changes
+  cp          Copy files/folders between a container and the local filesystem
+  create      Create a new container
+  diff        Inspect changes to files or directories on a container's filesystem
+  events      Get real time events from the server
+  exec        Run a command in a running container
+  export      Export a container's filesystem as a tar archive
+  history     Show the history of an image
+  images      List images
+  import      Import the contents from a tarball to create a filesystem image
+  info        Display system-wide information
+  inspect     Return low-level information on Docker objects
+  kill        Kill one or more running containers
+  load        Load an image from a tar archive or STDIN
+  login       Log in to a Docker registry
+  logout      Log out from a Docker registry
+  logs        Fetch the logs of a container
+  pause       Pause all processes within one or more containers
+  port        List port mappings or a specific mapping for the container
+  ps          List containers
+  pull        Pull an image or a repository from a registry
+  push        Push an image or a repository to a registry
+  rename      Rename a container
+  restart     Restart one or more containers
+  rm          Remove one or more containers
+  rmi         Remove one or more images
+  run         Run a command in a new container
+  save        Save one or more images to a tar archive (streamed to STDOUT by default)
+  search      Search the Docker Hub for images
+  start       Start one or more stopped containers
+  stats       Display a live stream of container(s) resource usage statistics
+  stop        Stop one or more running containers
+  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+  top         Display the running processes of a container
+  unpause     Unpause all processes within one or more containers
+  update      Update configuration of one or more containers
+  version     Show the Docker version information
+  wait        Block until one or more containers stop, then print their exit codes
+
+Run 'docker COMMAND --help' for more information on a command.
+
+To get more help with docker, check out our guides at https://docs.docker.com/go/guides/
+greaper@Greaper-PC:~$ docker logs
+"docker logs" requires exactly 1 argument.
+See 'docker logs --help'.
+
+Usage:  docker logs [OPTIONS] CONTAINER
+
+Fetch the logs of a container
+greaper@Greaper-PC:~$ docker logs ff828eed5c39
+Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.24/containers/ff828eed5c39/json: dial unix /var/run/docker.sock: connect: permission denied
+greaper@Greaper-PC:~$ sudo docker logs ff828eed5c39
+Running from: /usr/share/jenkins/jenkins.war
+webroot: EnvVars.masterEnvVars.get("JENKINS_HOME")
+2021-02-10 09:44:00.235+0000 [id=1]     INFO    org.eclipse.jetty.util.log.Log#initialized: Logging initialized @193ms to org.eclipse.jetty.util.log.JavaUtilLog
+2021-02-10 09:44:00.310+0000 [id=1]     INFO    winstone.Logger#logInternal: Beginning extraction from war file
+2021-02-10 09:44:03.280+0000 [id=1]     WARNING o.e.j.s.handler.ContextHandler#setContextPath: Empty contextPath
+2021-02-10 09:44:03.315+0000 [id=1]     INFO    org.eclipse.jetty.server.Server#doStart: jetty-9.4.33.v20201020; built: 2020-10-20T23:39:24.803Z; git: 1be68755656cef678b79a2ef1c2ebbca99e25420; jvm 1.8.0_275-b01
+2021-02-10 09:44:03.468+0000 [id=1]     INFO    o.e.j.w.StandardDescriptorProcessor#visitServlet: NO JSP Support for /, did not find org.eclipse.jetty.jsp.JettyJspServlet
+2021-02-10 09:44:03.491+0000 [id=1]     INFO    o.e.j.s.s.DefaultSessionIdManager#doStart: DefaultSessionIdManager workerName=node0
+2021-02-10 09:44:03.492+0000 [id=1]     INFO    o.e.j.s.s.DefaultSessionIdManager#doStart: No SessionScavenger set, using defaults
+2021-02-10 09:44:03.492+0000 [id=1]     INFO    o.e.j.server.session.HouseKeeper#startScavenging: node0 Scavenging every 660000ms
+2021-02-10 09:44:03.682+0000 [id=1]     INFO    hudson.WebAppMain#contextInitialized: Jenkins home directory: /var/jenkins_home found at: EnvVars.masterEnvVars.get("JENKINS_HOME")
+2021-02-10 09:44:03.780+0000 [id=1]     INFO    o.e.j.s.handler.ContextHandler#doStart: Started w.@3277e499{Jenkins v2.263.3,/,file:///var/jenkins_home/war/,AVAILABLE}{/var/jenkins_home/war}
+2021-02-10 09:44:03.795+0000 [id=1]     INFO    o.e.j.server.AbstractConnector#doStart: Started ServerConnector@5c86a017{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2021-02-10 09:44:03.795+0000 [id=1]     INFO    org.eclipse.jetty.server.Server#doStart: Started @3753ms
+2021-02-10 09:44:03.796+0000 [id=23]    INFO    winstone.Logger#logInternal: Winstone Servlet Engine running: controlPort=disabled
+2021-02-10 09:44:04.762+0000 [id=30]    INFO    jenkins.InitReactorRunner$1#onAttained: Started initialization
+2021-02-10 09:44:04.891+0000 [id=28]    INFO    hudson.PluginManager#considerDetachedPlugin: Loading a detached plugin as a dependency: /var/jenkins_home/plugins/command-launcher.jpi
+2021-02-10 09:44:04.899+0000 [id=28]    INFO    hudson.PluginManager#considerDetachedPlugin: Loading a detached plugin as a dependency: /var/jenkins_home/plugins/jdk-tool.jpi
+2021-02-10 09:44:05.164+0000 [id=46]    INFO    hudson.PluginManager#considerDetachedPlugin: Loading a detached plugin as a dependency: /var/jenkins_home/plugins/bouncycastle-api.jpi
+2021-02-10 09:44:06.077+0000 [id=32]    INFO    jenkins.InitReactorRunner$1#onAttained: Listed all plugins
+2021-02-10 09:44:06.123+0000 [id=35]    INFO    j.b.a.SecurityProviderInitializer#addSecurityProvider: Initializing Bouncy Castle security provider.
+2021-02-10 09:44:06.216+0000 [id=35]    INFO    j.b.a.SecurityProviderInitializer#addSecurityProvider: Bouncy Castle security provider initialized.
+2021-02-10 09:44:09.193+0000 [id=38]    INFO    jenkins.InitReactorRunner$1#onAttained: Prepared all plugins
+2021-02-10 09:44:09.199+0000 [id=30]    INFO    jenkins.InitReactorRunner$1#onAttained: Started all plugins
+2021-02-10 09:44:09.856+0000 [id=32]    INFO    jenkins.InitReactorRunner$1#onAttained: Augmented all extensions
+2021-02-10 09:44:09.865+0000 [id=50]    INFO    jenkins.InitReactorRunner$1#onAttained: System config loaded
+2021-02-10 09:44:09.865+0000 [id=33]    INFO    jenkins.InitReactorRunner$1#onAttained: System config adapted
+2021-02-10 09:44:09.865+0000 [id=39]    INFO    jenkins.InitReactorRunner$1#onAttained: Loaded all jobs
+2021-02-10 09:44:09.866+0000 [id=30]    INFO    jenkins.InitReactorRunner$1#onAttained: Configuration for all jobs updated
+2021-02-10 09:44:09.875+0000 [id=65]    INFO    hudson.model.AsyncPeriodicWork#lambda$doRun$0: Started Download metadata
+2021-02-10 09:44:09.880+0000 [id=65]    INFO    hudson.util.Retrier#start: Attempt #1 to do the action check updates server
+2021-02-10 09:44:10.145+0000 [id=41]    INFO    o.s.c.s.AbstractApplicationContext#prepareRefresh: Refreshing org.springframework.web.context.support.StaticWebApplicationContext@69b85fd1: display name [Root WebApplicationContext]; startup date [Wed Feb 10 09:44:10 GMT 2021]; root of context hierarchy
+2021-02-10 09:44:10.145+0000 [id=41]    INFO    o.s.c.s.AbstractApplicationContext#obtainFreshBeanFactory: Bean factory for application context [org.springframework.web.context.support.StaticWebApplicationContext@69b85fd1]: org.springframework.beans.factory.support.DefaultListableBeanFactory@56ae97e7
+2021-02-10 09:44:10.152+0000 [id=41]    INFO    o.s.b.f.s.DefaultListableBeanFactory#preInstantiateSingletons: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@56ae97e7: defining beans [authenticationManager]; root of factory hierarchy
+2021-02-10 09:44:10.236+0000 [id=41]    INFO    o.s.c.s.AbstractApplicationContext#prepareRefresh: Refreshing org.springframework.web.context.support.StaticWebApplicationContext@4b11d1d8: display name [Root WebApplicationContext]; startup date [Wed Feb 10 09:44:10 GMT 2021]; root of context hierarchy
+2021-02-10 09:44:10.236+0000 [id=41]    INFO    o.s.c.s.AbstractApplicationContext#obtainFreshBeanFactory: Bean factory for application context [org.springframework.web.context.support.StaticWebApplicationContext@4b11d1d8]: org.springframework.beans.factory.support.DefaultListableBeanFactory@3cb170dd
+2021-02-10 09:44:10.237+0000 [id=41]    INFO    o.s.b.f.s.DefaultListableBeanFactory#preInstantiateSingletons: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@3cb170dd: defining beans [filter,legacy]; root of factory hierarchy
+2021-02-10 09:44:10.394+0000 [id=41]    INFO    jenkins.install.SetupWizard#init:
+
+*************************************************************
+*************************************************************
+*************************************************************
+
+Jenkins initial setup is required. An admin user has been created and a password generated.
+Please use the following password to proceed to installation:
+
+6e866ee7726b4b26932824cc073c7de7
+
+This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
+
+*************************************************************
+*************************************************************
+*************************************************************
+
+2021-02-10 09:44:15.168+0000 [id=41]    INFO    jenkins.InitReactorRunner$1#onAttained: Completed initialization
+2021-02-10 09:44:15.185+0000 [id=22]    INFO    hudson.WebAppMain$3#run: Jenkins is fully up and running
+2021-02-10 09:44:15.254+0000 [id=65]    INFO    h.m.DownloadService$Downloadable#load: Obtained the updated data file for hudson.tasks.Maven.MavenInstaller
+2021-02-10 09:44:16.069+0000 [id=65]    INFO    h.m.DownloadService$Downloadable#load: Obtained the updated data file for hudson.tools.JDKInstaller
+2021-02-10 09:44:16.069+0000 [id=65]    INFO    hudson.util.Retrier#start: Performed the action check updates server successfully at the attempt #1
+2021-02-10 09:44:16.071+0000 [id=65]    INFO    hudson.model.AsyncPeriodicWork#lambda$doRun$0: Finished Download metadata. 6,195 ms
