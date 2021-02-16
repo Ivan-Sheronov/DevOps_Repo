@@ -1,0 +1,35 @@
+# I'm trying to start mssql database with replication enabled #
+
+version: "3.9"
+
+services: 
+
+  publisher: 
+    container_name: publisher
+    image: mcr.microsoft.com/mssql/server
+    env_file: 
+     - database.env
+    ports:
+     - "1431:1433"
+    restart: always
+
+  subscriber: 
+    container_name: subscriber
+    image: mcr.microsoft.com/mssql/server
+    env_file: 
+     - database.env
+    ports:
+     - "1432:1433"
+    restart: always
+
+  distributor:
+    container_name: distributor 
+    image: mcr.microsoft.com/mssql/server
+    env_file: 
+     - database.env
+    ports:
+     - "1433:1433"
+    restart: always
+
+volumes: 
+  database-data:
