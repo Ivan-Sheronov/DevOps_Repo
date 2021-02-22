@@ -1,1 +1,1 @@
-here lies playbook
+here lies playbook for nginx and passwordless access to servers

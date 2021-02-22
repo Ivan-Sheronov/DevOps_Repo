@@ -1,0 +1,13 @@
+---
+ - name: this playbook installing latest version of nginx
+   hosts: all
+   become: yes
+
+   tasks:
+   - name: check that the version of nginx is set to latest 
+     apt: name=nginx state=latest
+
+   - name: starting nginx
+     service: 
+      name: nginx
+      state: started
